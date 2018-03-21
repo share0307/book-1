@@ -1,0 +1,38 @@
+## Framework
+- Numeric 
+    - BIT[(M)]
+    - TINYINT[(M)] [UNSIGNED] [ZEROFILL]
+    - BOOL, BOOLEAN
+    - SMALLINT[(M)] [UNSIGNED] [ZEROFILL]
+    - MEDIUMINT[(M)] [UNSIGNED] [ZEROFILL]
+    - INT[(M)] [UNSIGNED] [ZEROFILL]
+    - INTEGER[(M)] [UNSIGNED] [ZEROFILL]
+    - BIGINT[(M)] [UNSIGNED] [ZEROFILL]
+    - DECIMAL[(M[,D])] [UNSIGNED] [ZEROFILL]
+    - DEC[(M[,D])] [UNSIGNED] [ZEROFILL], NUMERIC[(M[,D])] [UNSIGNED] [ZEROFILL], FIXED[(M[,D])] [UNSIGNED] [ZEROFILL]
+    - FLOAT[(M,D)] [UNSIGNED] [ZEROFILL]
+    - DOUBLE[(M,D)] [UNSIGNED] [ZEROFILL]
+    - DOUBLE PRECISION[(M,D)] [UNSIGNED] [ZEROFILL], REAL[(M,D)] [UNSIGNED] [ZEROFILL]
+    - FLOAT(p) [UNSIGNED] [ZEROFILL]
+-  Date and Time
+    - DATE
+    - DATETIME[(fsp)]
+    - TIMESTAMP[(fsp)]
+    - TIME[(fsp)]
+    - YEAR[(4)]
+- String 
+    - [NATIONAL] CHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name]
+    - [NATIONAL] VARCHAR(M) [CHARACTER SET charset_name] [COLLATE collation_name]
+    - BINARY[(M)]
+    - VARBINARY(M)
+    - TINYBLOB
+    - TINYTEXT [CHARACTER SET charset_name] [COLLATE collation_name]
+    - BLOB[(M)]
+    - TEXT[(M)] [CHARACTER SET charset_name] [COLLATE collation_name]
+    - MEDIUMBLOB
+    - MEDIUMTEXT [CHARACTER SET charset_name] [COLLATE collation_name]
+    - LONGBLOB
+    - LONGTEXT [CHARACTER SET charset_name] [COLLATE collation_name]
+    - ENUM('value1','value2',...) [CHARACTER SET charset_name] [COLLATE collation_name]
+    - SET('value1','value2',...) [CHARACTER SET charset_name] [COLLATE collation_name]
+- JSON        
