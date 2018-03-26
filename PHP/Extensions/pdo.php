@@ -44,7 +44,10 @@ class Test
         ];
         $this->db = DB::get($params);
     }
-    
+
+    /**
+     * 执行
+     */
     public function t1()
     {
         $sql = "insert into t1 (id, name, age) values(1, 'test', 10)";
@@ -53,6 +56,9 @@ class Test
               
     }
 
+    /**
+     * 查询
+     */
     public function t2()
     {
         $sql = "select * from t1";
@@ -61,6 +67,22 @@ class Test
              var_dump($val);exit;
         }
     }
+
+
+    /**
+     * 事务
+     */
+    public function t3()
+    {
+        $sql = "update t1 set name='lisi' where id = 1";
+
+        $this->db->beginTransaction();
+        $this->db->exec($sql);
+        $this->db->rollBack();
+        //$this->db->commit();
+    }
+
+
 }
 
 
