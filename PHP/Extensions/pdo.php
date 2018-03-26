@@ -1,5 +1,6 @@
 <?php
-class DB
+//连接管理
+class PdoConnection
 {
     private static $dbhList = [];
 
@@ -29,10 +30,20 @@ class DB
     }
 }
 
+//方法实体
+class PdoEntity
+{
 
-class Test
+}
+
+
+class DB
 {
     private $db;
+
+    private $sth;
+
+    private static $dbh;
     public function __construct()
     {
         $params = [
@@ -42,45 +53,22 @@ class Test
             'username' => 'root',
             'password' => 'UNgVouoi5tE2N3FEmJyiLy0HyPd',
         ];
-        $this->db = DB::get($params);
+        $this->db = PdoFactory::get($params);
     }
 
-    /**
-     * 执行
-     */
-    public function t1()
+
+    public static function __callStatic($name, $arguments)
     {
-        $sql = "insert into t1 (id, name, age) values(1, 'test', 10)";
-        $res = $this->db->exec($sql);
-        var_dump($res);exit;
-              
+
+        $pdoEntity = new PdoEntity(self::$dbh);
+        $pdoEntity->${name}($arguments[0], $arguments[1]);
     }
 
-    /**
-     * 查询
-     */
-    public function t2()
+    public function connection()
     {
-        $sql = "select * from t1";
-        $res = $this->db->query($sql);
-        foreach($res as $val) {
-             var_dump($val);exit;
-        }
+        return new PdoEntity(self::$dbh);
     }
 
-
-    /**
-     * 事务
-     */
-    public function t3()
-    {
-        $sql = "update t1 set name='lisi' where id = 1";
-
-        $this->db->beginTransaction();
-        $this->db->exec($sql);
-        $this->db->rollBack();
-        //$this->db->commit();
-    }
 
 
 }
@@ -89,8 +77,25 @@ class Test
 
 
 
-$test = new Test();
-$test->t2();
+//$sql $params
+DB::select();
+DB::selectFetchOne();
+DB::selectFetchRow();
+
+DB::insert();
+DB::insertGetId();
+
+DB::update();
+DB::updateGetRow();
+
+DB::delete();
+DB::deleteGetRow();
+
+DB::beginTransaction();
+DB::commit();
+DB::rollBack();
+
+
 
 
 
