@@ -1,5 +1,5 @@
 <?php
-//连接管理
+//Pdo连接
 class PdoConnection
 {
     private static $dbhList = [];
@@ -30,43 +30,55 @@ class PdoConnection
     }
 }
 
-//方法实体
+//Pdo配置
+class PdoConf
+{
+    private  $connection = [];
+
+    public function get($name)
+    {
+        return $this->connection[$name];
+    }
+
+    public function set($conf)
+    {
+        $this->connection = array_merge($this->connection, $conf);
+    }
+}
+
+//Pdo实体方法
 class PdoEntity
 {
 
 }
 
 
+//对外方法
 class DB
 {
-    private $db;
-
-    private $sth;
-
-    private static $dbh;
-    public function __construct()
-    {
-        $params = [
-            'host' => '127.0.0.1',
-            'port' => '3306',
-            'dbname' => 'test',
-            'username' => 'root',
-            'password' => 'UNgVouoi5tE2N3FEmJyiLy0HyPd',
-        ];
-        $this->db = PdoFactory::get($params);
-    }
+    private static $pdoList;
+    private static $defaultName = 'mysql';
 
 
     public static function __callStatic($name, $arguments)
     {
+        if(!self::$pdoList[self::$defaultName]) {
+            $conf = new PdoConf(self::$defaultName);
+            $dbh = new PdoConnection($conf);
+            self::$pdoList[self::$defaultName] = new PdoEntity($dbh);
+        }
 
-        $pdoEntity = new PdoEntity(self::$dbh);
-        $pdoEntity->${name}($arguments[0], $arguments[1]);
+        self::$pdoList[self::$defaultName]->{$name}($arguments[0], $arguments[1]);
     }
 
-    public function connection()
+    public static function connection($name)
     {
-        return new PdoEntity(self::$dbh);
+        if(!self::$pdoList[$name]) {
+            $conf = new PdoConf($name);
+            $dbh = new PdoConnection($conf);
+            self::$pdoList[$name] = new PdoEntity($dbh);
+        }
+        return self::$pdoList[$name];
     }
 
 
@@ -94,6 +106,8 @@ DB::deleteGetRow();
 DB::beginTransaction();
 DB::commit();
 DB::rollBack();
+
+DB::connection('test')->select();
 
 
 
