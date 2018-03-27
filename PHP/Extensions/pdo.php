@@ -109,6 +109,8 @@ DB::rollBack();
 
 DB::connection('test')->select();
 
+//查询构造器
+
 
 
 
