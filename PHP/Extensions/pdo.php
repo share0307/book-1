@@ -86,6 +86,32 @@ class PdoEntity
         return false;
     }
 
+    public function selectFetch($sql, $params)
+    {
+        $this->sql = $sql;
+        $this->params = $params;
+
+        if($this->execute()) {
+            return $this->sth->fetch();
+        }
+
+        return false;
+    }
+
+    public function selectFetchColumn($sql, $params)
+    {
+        $this->sql = $sql;
+        $this->params = $params;
+
+        if($this->execute()) {
+            return $this->sth->fetchColumn();
+        }
+
+        return false;
+    }
+
+
+
     public function insert($sql, $params)
     {
         $this->sql = $sql;
@@ -226,13 +252,13 @@ class DB
 }
 
 
-$res = DB::select('SELECT * FROM student WHERE studentId<:id',[':id'=>10]);
+$res = DB::selectFetchColumn('SELECT studentId FROM student WHERE studentId<:id LIMIT 1',[':id'=>10]);
 var_dump($res);
 
 //$sql $params
 //DB::select();
 //DB::selectFetchOne();
-//DB::selectFetchRow();
+//DB::selectFetchColumn();
 //
 //DB::insert();
 //DB::insertGetId();
