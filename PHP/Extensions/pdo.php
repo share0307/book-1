@@ -11,6 +11,7 @@ class PdoConnection
         $dbname = $params['dbname'] ?? '';
         $username = $params['username'] ?? '';
         $password = $params['password'] ?? '';
+        $persistent = $params['persistent'] ?? true;
          
         $dns = "mysql:host={$host};port={$port};dbname={$dbname}";
         $key = "{$dns}username:{$username}password:{$password}";
@@ -20,7 +21,7 @@ class PdoConnection
         
         $dbh = null;
         try {
-            $dbh = new \PDO($dns, $username, $password,array(PDO::ATTR_PERSISTENT=>true));
+            $dbh = new \PDO($dns, $username, $password,[PDO::ATTR_PERSISTENT=>$persistent]);
         } catch (\PDOException $e) {
             echo $e->getMessage().PHP_EOL;
             exit;
@@ -33,22 +34,44 @@ class PdoConnection
 //Pdo配置
 class PdoConf
 {
-    private  $connection = [];
+    private static  $connection = [
+        'mysql' => [
+            'host' => '127.0.0.1',
+            'port' => '3306',
+            'database' => '',
+            'username' => '',
+            'password' => '',
+            'persistent' => '',
+            'charset' => '',
+            'collation' => '',
+        ],
+    ];
 
-    public function get($name)
+    public static function get($name)
     {
-        return $this->connection[$name];
+        return self::$connection[$name];
     }
 
-    public function set($conf)
+    public static function set($conf)
     {
-        $this->connection = array_merge($this->connection, $conf);
+        self::$connection = array_merge(self::$connection, $conf);
     }
 }
 
 //Pdo实体方法
 class PdoEntity
 {
+    private $dbh = null;
+
+    public function __construct($dbh)
+    {
+        $this->dbh = $dbh;
+    }
+
+    public function select()
+    {
+
+    }
 
 }
 
@@ -63,8 +86,8 @@ class DB
     public static function __callStatic($name, $arguments)
     {
         if(!self::$pdoList[self::$defaultName]) {
-            $conf = new PdoConf(self::$defaultName);
-            $dbh = new PdoConnection($conf);
+            $conf = PdoConf::get(self::$defaultName);
+            $dbh = PdoConnection::get($conf);
             self::$pdoList[self::$defaultName] = new PdoEntity($dbh);
         }
 
@@ -74,15 +97,12 @@ class DB
     public static function connection($name)
     {
         if(!self::$pdoList[$name]) {
-            $conf = new PdoConf($name);
-            $dbh = new PdoConnection($conf);
+            $conf = PdoConf::get($name);
+            $dbh = PdoConnection::get($conf);
             self::$pdoList[$name] = new PdoEntity($dbh);
         }
         return self::$pdoList[$name];
     }
-
-
-
 }
 
 
