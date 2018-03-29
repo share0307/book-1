@@ -164,7 +164,7 @@ class PdoEntity
             return true;
         }
         else {
-            return false;
+            throw new \PDOException($this->sth->errorInfo()[2]);
         }
     }
 
@@ -190,34 +190,6 @@ class PdoEntity
 
     }
 
-
-    /**
-     * 错误码
-     * @return string
-     */
-    public function errorCode()
-    {
-        if($this->sth) {
-            return $this->sth->errorCode();
-        }
-        else {
-            return '';
-        }
-    }
-
-    /**
-     * 错误信息
-     * @return string
-     */
-    public function errorInfo()
-    {
-        if($this->sth) {
-            return $this->sth->errorInfo();
-        }
-        else {
-            return '';
-        }
-    }
 }
 
 
@@ -252,7 +224,7 @@ class DB
 }
 
 
-$res = DB::selectFetchColumn('SELECT studentId FROM student WHERE studentId<:id LIMIT 1',[':id'=>10]);
+$res = DB::selectFetchColumn('SELECT id FROM student WHERE studentId<:id LIMIT 1',[':id'=>10]);
 var_dump($res);
 
 // 查询
