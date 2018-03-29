@@ -255,19 +255,20 @@ class DB
 $res = DB::selectFetchColumn('SELECT studentId FROM student WHERE studentId<:id LIMIT 1',[':id'=>10]);
 var_dump($res);
 
+// 查询
 //$sql $params
-//DB::select();
-//DB::selectFetchOne();
-//DB::selectFetchColumn();
+//DB::select();二维数组
+//DB::selectFetch();一维数组
+//DB::selectFetchColumn();//单个值
 //
-//DB::insert();
-//DB::insertGetId();
+//DB::insert();// true || false
+//DB::insertGetId();// id || false
 //
-//DB::update();
-//DB::updateGetRow();
+//DB::update();// true || false
+//DB::updateGetRow();// row || false
 //
-//DB::delete();
-//DB::deleteGetRow();
+//DB::delete();//true || false
+//DB::deleteGetRow();// row || false
 //
 //DB::beginTransaction();
 //DB::commit();
