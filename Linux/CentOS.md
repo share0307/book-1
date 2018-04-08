@@ -1,4 +1,4 @@
-## 
+## CentOS mini 初始化
 ```
 yum -y update
 yum -y groupinstall "Development tools"
