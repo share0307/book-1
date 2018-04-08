@@ -10,6 +10,7 @@ cd php-${php_version}
 
 ./configure \
 --prefix=/opt/www/php${php_version} \
+--with-config-file-path=/opt/www/php${php_version}/etc \
 --with-fpm-user=nginx \
 --with-fpm-group=nginx \
 --enable-bcmath \
