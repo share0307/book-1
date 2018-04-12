@@ -1,4 +1,8 @@
 <?php
+/**
+ * pdo扩展使用示例
+ */
+
 //Pdo连接
 class PdoConnection
 {

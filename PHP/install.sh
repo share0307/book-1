@@ -3,6 +3,7 @@ php_version=$1
 php_port=$2
 home_dir=$3
 
+
 cd ${home_dir}
 wget http://cn2.php.net/distributions/php-${php_version}.tar.gz
 tar -xvf php-${php_version}.tar.gz
@@ -20,7 +21,7 @@ cd php-${php_version}
 --enable-mbstring \
 --enable-opcache \
 --enable-pcntl \
- --enable-shmop \
+--enable-shmop \
 --enable-sockets \
 --enable-sysvmsg \
 --enable-sysvsem \

@@ -1,0 +1,25 @@
+## windows必备软件
+- 虚拟机：vmware + centos7 
+- php集成：phpstudy
+- nodejs集成
+- postman
+- navicat
+- xshell
+- chrome
+- sublime
+- phpstorm
+- 钉钉
+- qq
+- 微信开发工具
+- evernote
+- atom
+- robo 3T
+- Redis desk
+- Fiddler
+- 360压缩
+- git bash
+- smartgit
+- shadowsocks
+- 腾讯微云
+- offices
+- 网易云音乐
