@@ -11,9 +11,5 @@ $handler = new SessionHandler($db);
 session_set_save_handler($handler, false);
 
 
-
 session_start();
-
-$_SESSION['abc'] = 123;
-
-session_write_close();
+var_dump($_SESSION);exit;
