@@ -3,8 +3,17 @@ require "./autoload.php";
 
 use Mecha\Session\SessionHandler;
 use Mecha\Database\DB;
+use Mecha\Database\PdoConf;
 
-//$db = DB::connection();
-//$session = new SessionHandler($db);
+
+$db = DB::connection('localTest');
+$handler = new SessionHandler($db);
+session_set_save_handler($handler, false);
+
+
+
 session_start();
-echo strlen(session_id());
+
+$_SESSION['abc'] = 123;
+
+session_write_close();

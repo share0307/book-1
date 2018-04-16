@@ -70,6 +70,7 @@ class PdoEntity
     {
         $this->sql = $sql;
         $this->params = $params;
+
         return $this->execute();
     }
 
@@ -77,6 +78,7 @@ class PdoEntity
     {
         $this->sql = $sql;
         $this->params = $params;
+
         return $this->execute();
     }
 
@@ -94,6 +96,7 @@ class PdoEntity
         $this->prepareParams();
 
         $this->sth = $this->dbh->prepare($this->sql);
+
         foreach ($this->params as $key => $val) {
 
             $param_type = PDO::PARAM_STR;
@@ -112,6 +115,7 @@ class PdoEntity
 
             $this->sth->bindValue($key, $val, $param_type);
         }
+
 
         $this->sth->execute();
         if($this->sth->errorCode()  === '00000') {
@@ -135,8 +139,9 @@ class PdoEntity
      */
     private function prepareSql()
     {
+
         if(is_callable($this->sql)) {
-            $this->sql = $this->sql();
+            $this->sql = ($this->sql)();
         }
     }
 

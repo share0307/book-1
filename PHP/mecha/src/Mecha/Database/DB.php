@@ -14,7 +14,6 @@ class DB
 
     public static function __callStatic($name, $arguments)
     {
-
         if(!self::$pdoList[self::$defaultName]) {
             $conf = PdoConf::get(self::$defaultName);
             $dbh = PdoConnection::get($conf);
