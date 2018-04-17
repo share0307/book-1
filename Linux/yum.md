@@ -1,4 +1,12 @@
+## yum install
+```
+yum -y update
 yum -y groupinstall "Development tools"
+yum -y install gcc
+yum -y install gcc-c++
+yum -y install pcre pcre-devel
+yum -y install zlib zlib-devel
+yum -y install openssl openssl-devel
 yum -y install php-gd
 yum -y install freetype*
 yum -y install gd
@@ -39,4 +47,7 @@ yum -y install net-snmp-devel
 yum -y install libxslt-devel
 yum -y install libedit-devel
 yum -y install libtidy-devel
-yum -y install readline-devel
+yum -y install vim
+yum -y install wget
+yum -y install net-tools
+```
