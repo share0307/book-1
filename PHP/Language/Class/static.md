@@ -1,3 +1,6 @@
+## 静态延迟绑定
+
+```
 <?php
 /**
  * 静态延迟绑定
@@ -70,3 +73,5 @@ class Product extends Model
 }
 
 Product::find();
+
+```

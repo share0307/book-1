@@ -1,0 +1,3 @@
+```
+pecl install {package}
+```
