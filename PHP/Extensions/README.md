@@ -171,3 +171,59 @@ zlib version >= 1.0.9
 
 
 # External Extensions
+
+## Bzip2
+
+- 安装
+
+```
+--with-bz2[=DIR]
+```
+
+- 需求
+
+```
+bzip2/libbzip2 version >= 1.0.x
+```
+
+## Bzip2
+
+- 安装
+
+```
+--with-curl[=DIR]
+```
+
+- 需求
+
+```
+libcurl version 7.10.5 or later
+```
+
+## DOM
+
+- 安装
+
+```
+默认编译
+```
+
+- 需求
+
+```
+--enable-libxml
+```
+
+## Zip
+
+- 安装
+
+```
+ --enable-zip
+```
+
+- 需求
+
+```
+libzip which is bundled with PHP.
+```
