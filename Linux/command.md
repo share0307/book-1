@@ -61,6 +61,9 @@ usermod -G php,www php
 usermod -G nginx,www nginx
 usermod -G git,www git
 
+groupadd -g 2020 zcp
+useradd -u 2021 -g zcp zcp
+
 ```
 
 ## visudo
