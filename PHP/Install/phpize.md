@@ -1,3 +1,4 @@
+## 安装命令
 ```
 a. 进入php源码包下的ext，进入扩展包文件
 b. mv config0.m4 config.m4

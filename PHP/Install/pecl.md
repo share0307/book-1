@@ -1,3 +1,4 @@
+## 安装命令
 ```
-pecl install {package}
+pecl install {packagename}
 ```

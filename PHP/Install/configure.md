@@ -1,3 +1,4 @@
+## 编译示例
 ```
 ./configure \
 --prefix=/opt/www/php7.2.0 \
