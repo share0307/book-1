@@ -26,7 +26,7 @@ mysql> LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl FIELDS TERMINATED BY '
 
 mysql> LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl (b, c, a);
 
-mysqlimport -u root -p --local database_name dump.txt
+mysqlimport -u root -p --local database_name  dump.txt
 mysqlimport -u root -p --local --fields-terminated-by=":" --lines-terminated-by="\r\n"  database_name dump.txt
 mysqlimport -u root -p --local --columns=b,c,a database_name dump.txt
 ```
